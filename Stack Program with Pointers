@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+#define MAX 10
+ struct stack{
+       int arr[MAX];
+       int top;
+       };
+       // function prototype 
+       void push(struct stack*,int );// it will push value to stack. 
+       int pop(struct stack*);// it will pop value from stack.
+int main()
+{
+     int n,top=-1,x, opt;
+     struct stack stk;
+    
+     printf("Enter 1 to push\n");
+     printf("Enter 2 to pop\n");
+     printf("Enter 3 to Exit\n");
+     
+     
+     while(1)
+     {
+         printf("\nEnter Your Choice\n");
+         scanf("%d",&opt);
+             switch(opt)
+             {
+                        case 1: printf("Enter the Value");
+                                scanf("%d",&n);
+                                push(&stk,n);
+                                break;
+                        case 2:
+                               x= pop(&stk);
+                               printf("%d",x);
+                               break;
+                        case 3: 
+                             exit(0);
+                            
+             }
+     }
+     
+     return 0;
+}
+void push(struct stack *p,int n)
+{
+     if(p->top== (MAX -1))
+     {
+                 printf("STACK OVERFLOW");
+     }
+     else
+     {
+         p->top++;
+         p->arr[p->top]=n;
+     }
+     return;
+}
+int pop(struct stack *p)
+{
+    int val;
+    if(p->top== -1)
+    {
+                printf("STACK UNDERFLOW");
+    }
+    else
+    {
+        val= p->arr[p->top];
+        p->top--;
+    }
+    return (val);
+}
